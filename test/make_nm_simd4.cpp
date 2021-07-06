@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2019-2020 FUJITSU LIMITED
+ * Copyright 2019-2021 FUJITSU LIMITED
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -1038,13 +1038,13 @@ public:
 
   void declareAllVregElem() {
     // declareVregElem("b", 8,  tmpV, idx8B);
-    declareVregElem("b", 16, tmpV, idx16B);
+    //    declareVregElem("b", 16, tmpV, idx16B);
     // declareVregElem("h", 4,  tmpV, idx4H);
-    declareVregElem("h", 8, tmpV, idx8H);
+    //    declareVregElem("h", 8, tmpV, idx8H);
     // declareVregElem("s", 2,  tmpV, idx2S);
-    declareVregElem("s", 4, tmpV, idx4S);
+    //    declareVregElem("s", 4, tmpV, idx4S);
     // declareVregElem("d", 1,  tmpV, idx1D);
-    declareVregElem("d", 2, tmpV, idx2D);
+    //    declareVregElem("d", 2, tmpV, idx2D);
   }
 
   void setAllVregElem() {
@@ -2365,54 +2365,14 @@ public:
     putDataProcSimd_CryptographicExtension13();
   }
 
-  /*      class Ops {
-          public:
-          Ops();
-          ~Ops();
-          pushNm(std::string) {
-
-          };
-          pushOp1();
-          pushOp2();
-          pushOp3();
-          pushOp4();
-          pushOp5();
-          private:
-          std::vector<std::string> nm;
-          std::vector<std::string> op1;
-          std::vector<std::string> op2;
-          std::vector<std::string> op3;
-          std::vector<std::string> op4;
-          std::vector<std::string> op5;
-          }
-  */
-
   void putDataProcSimd() {
-    putDataProcSimd_Move();
-    putDataProcSimd_Arithmetic();
-    putDataProcSimd_Compare();
-    putDataProcSimd_WideningAndNarrowingArithmetic();
     putDataProcSimd_UnaryArithmetic();
-    putDataProcSimd_ByElementArithmetic();
-    putDataProcSimd_Permute();
-    putDataProcSimd_Immediate();
-    putDataProcSimd_ShiftImmediate();
-    putDataProcSimd_FloatingPointAndIntergerConversion();
-    putDataProcSimd_ReduceAcrossVectorLanes();
-    putDataProcSimd_PairwiseArithmetic();
-    putDataProcSimd_DotProduct();
-    putDataProcSimd_TableLookup();
-    putDataProcSimd_ComplexNumberArithmetic();
-    putDataProcSimd_CryptographicExtension();
   }
 
   void putDataProcSimdFp() { putDataProcSimd(); }
 
   void put() {
     putDataProcSimdFp();
-
-    //    Ops hoge();
-    //    hoge.pushNm({"add", "sub"});
   }
 };
 

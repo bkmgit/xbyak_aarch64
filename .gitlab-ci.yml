@@ -14,11 +14,19 @@ ClangFormatCheck:
   script:
   - ./.github/automation/clang-format.sh
 
-job_1:
+gcc:
   stage: test
   image: bce7edfda510
   script:
+    - source .github/automation/env/setenv-gcc
     - make
     - cd test
-    - ./test_all.sh -g
-    - ./test_all.sh -f
+    - ./test_all.sh
+fcc:
+  stage: test
+  image: bce7edfda510
+  script:
+    - source .github/automation/env/setenv-fcc
+    - make
+    - cd test
+    - ./test_all.sh

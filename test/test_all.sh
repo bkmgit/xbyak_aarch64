@@ -1,6 +1,6 @@
 #!/bin/bash
 #*******************************************************************************
-# Copyright 2019-2020 FUJITSU LIMITED
+# Copyright 2019-2021 FUJITSU LIMITED
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -14,44 +14,31 @@
 # See the License for the specific language governing permissions and
 # imitations under the License.
 # *******************************************************************************/
-nm_list="make_nm make_nm_branch make_nm_fp make_nm_load_store make_nm_simd make_nm_simd_fp_load_store make_nm_sve make_nm_sve_addr"
+RESULT=0
 
-do_all_test() {
-    echo "########################################################"
-    echo "Test with ${COMPILER}"
-    echo "########################################################"
-    for i in ${nm_list} ;
-    do
-	echo "########################################################"
+make -j$(nproc)
 
-	echo "Start test senario=${i}"
-	./test_nm.sh ${TEST_OPT} ${i}
-	if [ $? != 0 ] ;then
-            echo "err"
-            exit 1
+for i in make_nm*.cpp ; do
+    FILE_NAME=`basename ${i} .cpp`
+
+    if [ -f ${FILE_NAME}.ok ] ;then
+	COUNT_OK=`wc -l ${FILE_NAME}.ok | sed -e "s/^[ \t]*//" | cut -f 1 -d " "`
+    else
+	RESULT=1
+    fi
+
+    if [ -f ${FILE_NAME}.result ] ; then
+	COUNT_ERR=`wc -l ${FILE_NAME}.result | sed -e "s/^[ \t]*//" | cut -f 1 -d " "`
+	if [ ! $? -eq 0 ] ; then
+	    RESULT=1
 	fi
-	mv nm.cpp nm.${i}.cpp
+    else
+	RESULT=1
+    fi
 
-	echo "Finish test senario=${i}"
-	echo "########################################################"
-	echo ""
-    done
-}
-
-while getopts gf OPT
-do
-    case $OPT in
-        g) COMPILER=GCC
-           TEST_OPT=""
-           ;;
-        f) COMPILER=FCC
-           TEST_OPT="-f"
-           ;;
-        *) COMPILER=GCC
-           TEST_OPT=""
-           ;;
-    esac
+    echo "${FILE_NAME} ${COUNT_OK} ${COUNT_ERR}"
 done
-shift $((OPTIND - 1))
 
-do_all_test
+wc -l *.ok | tail -n 1
+
+exit ${RESULT}

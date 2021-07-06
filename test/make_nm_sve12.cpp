@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2019-2020 FUJITSU LIMITED
+ * Copyright 2019-2021 FUJITSU LIMITED
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -3040,61 +3040,11 @@ public:
   }
 
   void putSVE() {
-    putSVE_IntegerBinaryArithmeticPredicatedGroup();
-    putSVE_IntegerReductionGroup();
-    putSVE_BitwiseShiftPredicatedGroup();
-    putSVE_IntegerUnaryArithmeticPredicatedGroup();
-    putSVE_IntegerMultiplyAddPredicatedGroup();
-    putSVE_IntegerArithmeticUnpredicated();
-    putSVE_BitwiseLogicalUnpredicated();
-    putSVE_IndexGeneration();
-    putSVE_StackAllocation();
-    putSVE_BitwiseShiftUnpredicated();
-    putSVE_AddressGenerationGroup();
-    putSVE_IntegerMiscUnpredicated();
     putSVE_ElementCount();
-    putSVE_BitwiseImmediate();
-    putSVE_IntegerWideImmediatePredicated();
-    putSVE_PermuteVectorExtract();
-    putSVE_PermuteVectorUnpredicated();
-    putSVE_PermutePredicate();
-    putSVE_PermuteVectorInterleaving();
-    putSVE_PermuteVectorPredicated();
-    putSVE_VectorSelect();
-    putSVE_IntegerCompareVectors();
-    putSVE_IntegerCompareUnsignedImmediate();
-    putSVE_PredicateLogicalOperations();
-    putSVE_PropagateBreak();
-    putSVE_PartitionBreak();
-    putSVE_PredicateMisc();
-    putSVE_IntegerCompareSignedImmediate();
-    putSVE_PredicateCount();
-    putSVE_IncDecbyPredicateCount();
-    putSVE_WriteFFR();
-    putSVE_IntegerCompareScalars();
-    putSVE_IntegerWideImmediateUnpredicated();
-    putSVE_IntegerMultiplyAddUnpredicated();
-    putSVE_MultiplyIndexed();
-
-    putSVE_FloatingPointComplexAddition();
-    putSVE_FloatingPointMultiplyAddIndexed();
-    putSVE_FloatingPointComplexMultiplyAddIndexed();
-    putSVE_FloatingPointMultiplyIndexed();
-    putSVE_FloatingPointFastReduction();
-    putSVE_FloatingPointUnaryOperationsUnpredicated();
-    putSVE_FloatingPointComparewithZero();
-    putSVE_FloatingPointAccumulatingReduction();
-    putSVE_FloatingPointArithmeticUnpredicated();
-    putSVE_FloatingPointArithmeticPredicated();
-    putSVE_FloatingPointUnaryOperationsPredicated();
-    putSVE_FloatingPointCompareVectors();
-    putSVE_FloatingPointMultiplyAdd();
   }
 
   void put() {
     putSVE();
-    //    Ops hoge();
-    //    hoge.pushNm({"add", "sub"});
   }
 };
 

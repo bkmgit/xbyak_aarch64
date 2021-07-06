@@ -29,7 +29,7 @@ class Sample : public CodeGenerator {
   void operator=(const Sample &);
 
 public:
-#include "nm.cpp"
+#include "TEST_PTN"
 };
 
 #define _STR(x) #x

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2019-2020 FUJITSU LIMITED
+ * Copyright 2019-2021 FUJITSU LIMITED
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -913,15 +913,7 @@ public:
   }
 
   void putDataProcImm() {
-    putDataProcImm_ArithmeticImmediate();
-    putDataProcImm_LogicalImmediate();
-    putDataProcImm_MoveWideImmediate();
-    //    putDataProcImm_MoveImmediate(); // T.B.D.
-    putDataProcImm_BitfieldMove();
-    putDataProcImm_BitfieldInsertAndExtract();
-    putDataProcImm_ExtractRegister();
     putDataProcImm_ShiftImmediate();
-    putDataProcImm_SignExtendAndZeroExtend();
   }
 
   /** C3.4 Data processing - register */
@@ -1284,10 +1276,6 @@ public:
 
   void put() {
     putDataProcImm();
-    putDataProcReg();
-
-    //    Ops hoge();
-    //    hoge.pushNm({"add", "sub"});
   }
 };
 

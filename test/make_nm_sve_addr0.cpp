@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2019-2020 FUJITSU LIMITED
+ * Copyright 2019-2021 FUJITSU LIMITED
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -2516,24 +2516,11 @@ public:
   }
 
   void putSVE_addr() {
-
     putSVE_Memory32bitGatherandUnsizedContiguous();
-    /** Because various operand variation are required,
-        MemoryContiguousLoad is devided to three parts. */
-    putSVE_MemoryContiguousLoad0();
-    putSVE_MemoryContiguousLoad1();
-    putSVE_MemoryContiguousLoad2();
-    putSVE_Memory64bitGather();
-    /** Because various operand variation are required,
-        MemoryStore is devided to two parts. */
-    putSVE_MemoryStore0();
-    putSVE_MemoryStore1();
   }
 
   void put() {
     putSVE_addr();
-    //    Ops hoge();
-    //    hoge.pushNm({"add", "sub"});
   }
 };
 
